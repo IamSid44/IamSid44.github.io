@@ -54,4 +54,30 @@ section {
     background: #1e1e1e;
     border: 1px solid #424242;
     padding: 1rem;
-    margin
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.project-card h3 {
+    color: #42a5f5;
+}
+
+footer {
+    text-align: center;
+    background: #0d47a1;
+    color: #fff;
+    padding: 1rem 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+a {
+    color: #42a5f5;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
