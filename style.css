@@ -1,7 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    background: url('circuit-board.jpg') no-repeat center center fixed;
+    background: url('background_circuit.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #e0e0e0;
     line-height: 1.6;
