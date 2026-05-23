@@ -32,7 +32,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Apply to elements that should animate on scroll
-document.querySelectorAll('.about-card, .timeline-item, .project-card, .sidequest-card, .contact-item').forEach(el => {
+document.querySelectorAll('.timeline-item, .project-card, .sidequest-card, .contact-item, .publication-card, .achievement-item').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -44,7 +44,6 @@ document.querySelectorAll('.about-card, .timeline-item, .project-card, .sideques
 // ============================================
 document.querySelectorAll('.project-card, .sidequest-card').forEach(card => {
     card.addEventListener('mouseenter', function () {
-        // Add subtle scale and shadow on hover
         this.style.transform = 'translateY(-12px) scale(1.02)';
     });
 
@@ -92,18 +91,18 @@ window.addEventListener('scroll', () => {
 // ============================================
 // STAGGER ANIMATION FOR CARDS
 // ============================================
-const cards = document.querySelectorAll('.project-card, .sidequest-card, .about-card');
+const cards = document.querySelectorAll('.project-card, .sidequest-card, .publication-card, .achievement-item');
 cards.forEach((card, index) => {
     card.style.opacity = '0';
     card.style.animation = `slideUp 0.8s ease-out ${0.1 * index}s forwards`;
 });
 
 // ============================================
-// PARALLAX EFFECT (optional subtle movement)
+// PARALLAX EFFECT - HERO IMAGE
 // ============================================
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.hero-image-placeholder');
+    const parallaxElements = document.querySelectorAll('.hero-image');
 
     parallaxElements.forEach(el => {
         el.style.transform = `translateY(${scrolled * 0.05}px)`;
@@ -111,7 +110,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================
-// CLICK INTERACTION - TAGS
+// INTERACTIVE TAGS
 // ============================================
 document.querySelectorAll('.sidequest-tags span').forEach(tag => {
     tag.style.cursor = 'pointer';
