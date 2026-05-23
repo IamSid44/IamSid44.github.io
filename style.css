@@ -134,6 +134,7 @@ body {
 
 .hero-content {
     flex: 1;
+    min-width: 0;
 }
 
 .hero-title {
@@ -145,6 +146,7 @@ body {
     background-clip: text;
     margin-bottom: 0.5rem;
     animation: slideUp 0.8s ease-out 0.1s both;
+    line-height: 1.2;
 }
 
 @keyframes slideUp {
@@ -176,6 +178,7 @@ body {
     display: flex;
     gap: 1rem;
     animation: slideUp 0.8s ease-out 0.4s both;
+    flex-wrap: wrap;
 }
 
 .btn {
@@ -186,6 +189,7 @@ body {
     transition: all 0.3s ease;
     border: 2px solid transparent;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .btn-primary {
@@ -211,11 +215,13 @@ body {
 
 .hero-right {
     flex: 1;
+    min-width: 0;
     animation: slideUp 0.8s ease-out 0.3s both;
 }
 
 .hero-image-placeholder {
     width: 100%;
+    max-width: 400px;
     aspect-ratio: 1;
     background: linear-gradient(135deg, var(--primary-lavender), var(--secondary-peach));
     border-radius: 20px;
@@ -227,6 +233,7 @@ body {
     font-weight: 500;
     box-shadow: var(--shadow);
     animation: float 3s ease-in-out infinite;
+    margin: 0 auto;
 }
 
 @keyframes float {
@@ -243,12 +250,19 @@ body {
    ============================================ */
 .section {
     padding: 4rem 2rem;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.section > .container {
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .container {
     width: 100%;
+    padding: 0 1rem;
 }
 
 .section-title {
@@ -282,7 +296,7 @@ body {
    ============================================ */
 .about-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -349,6 +363,8 @@ body {
     border-radius: 12px;
     border-left: 4px solid var(--primary-purple);
     transition: all 0.3s ease;
+    flex: 1;
+    min-width: 0;
 }
 
 .timeline-content:hover {
@@ -381,7 +397,7 @@ body {
    ============================================ */
 .publication-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -431,7 +447,7 @@ body {
    ============================================ */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -444,6 +460,8 @@ body {
     transition: all 0.3s ease;
     animation: slideUp 0.8s ease-out;
     animation-fill-mode: both;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:nth-child(1) { animation-delay: 0.1s; }
@@ -467,6 +485,7 @@ body {
     font-size: 0.8rem;
     font-weight: 600;
     margin-bottom: 1rem;
+    width: fit-content;
 }
 
 .project-card h3 {
@@ -477,6 +496,7 @@ body {
 .project-card p {
     color: var(--text-light);
     margin-bottom: 1rem;
+    flex: 1;
 }
 
 .project-tech {
@@ -491,6 +511,7 @@ body {
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
+    width: fit-content;
 }
 
 .project-link:hover {
@@ -503,7 +524,7 @@ body {
    ============================================ */
 .achievements-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -543,7 +564,7 @@ body {
    ============================================ */
 .sidequests-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
     margin-bottom: 3rem;
@@ -557,6 +578,8 @@ body {
     transition: all 0.3s ease;
     animation: slideUp 0.8s ease-out;
     animation-fill-mode: both;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidequest-card:nth-child(1) { animation-delay: 0.1s; }
@@ -585,6 +608,7 @@ body {
 .sidequest-card p {
     color: var(--text-light);
     margin-bottom: 1rem;
+    flex: 1;
 }
 
 .sidequest-tags {
@@ -609,6 +633,8 @@ body {
     border-radius: 15px;
     border-left: 5px solid var(--primary-purple);
     animation: slideUp 0.8s ease-out 0.4s both;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .sidequest-philosophy h3 {
@@ -621,7 +647,7 @@ body {
    ============================================ */
 .contact-links {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -658,6 +684,8 @@ body {
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
+    display: inline-block;
+    word-break: break-word;
 }
 
 .contact-item a:hover {
@@ -679,18 +707,51 @@ body {
 /* ============================================
    RESPONSIVE DESIGN
    ============================================ */
+@media (max-width: 1024px) {
+    .hero {
+        padding: 3rem 1.5rem;
+        gap: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .section {
+        padding: 3rem 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
         padding: 2rem 1rem;
+        text-align: center;
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
     .hero-subtitle {
         font-size: 1.2rem;
+    }
+
+    .hero-links {
+        justify-content: center;
+    }
+
+    .hero-right {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-image-placeholder {
+        max-width: 100%;
     }
 
     .nav-links {
@@ -698,27 +759,40 @@ body {
         font-size: 0.9rem;
     }
 
-    .section-title {
-        font-size: 2rem;
+    .section {
+        padding: 2rem 1rem;
     }
 
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .about-grid,
+    .publication-grid,
     .projects-grid,
-    .sidequests-grid {
+    .sidequests-grid,
+    .achievements-grid,
+    .contact-links {
         grid-template-columns: 1fr;
     }
 
-    .hero-links {
-        flex-direction: column;
+    .timeline-item {
+        gap: 1rem;
     }
 
-    .btn {
-        text-align: center;
+    .timeline-marker {
+        font-size: 1.5rem;
+        flex-shrink: 0;
     }
 }
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
     }
 
     .nav-links {
@@ -726,11 +800,53 @@ body {
         gap: 0.5rem;
     }
 
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
     .section {
-        padding: 2rem 1rem;
+        padding: 1.5rem 1rem;
     }
 
     .section-title {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .project-card,
+    .sidequest-card,
+    .about-card {
+        padding: 1.5rem;
+    }
+
+    .sidequest-philosophy {
+        padding: 1.5rem;
+    }
+}
+
+/* ============================================
+   PRINT STYLES (optional for PDF export)
+   ============================================ */
+@media print {
+    .navbar {
+        display: none;
+    }
+
+    .hero-links {
+        display: none;
+    }
+
+    body {
+        background: white;
     }
 }
