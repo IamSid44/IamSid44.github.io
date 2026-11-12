@@ -95,8 +95,7 @@
   padding: 9px 0;
 }
 .kv-link svg,
-.footer-base svg,
-.filter-toggle svg {
+.footer-base svg {
   width: 12px;
   height: 12px;
 }
@@ -548,19 +547,6 @@
 .filter-row > .label {
   padding-top: 6px;
 }
-.filter-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 6px 0 0;
-  border: 0;
-  background: none;
-  text-align: left;
-  transition: color var(--dur-fast) var(--ease);
-}
-.filter-toggle:hover {
-  color: var(--fg);
-}
 
 .project-list {
   border-bottom: 1px solid var(--line);
@@ -737,14 +723,10 @@
   gap: 4px;
   min-width: 0;
 }
-.tl-row,
 .tl-head {
   display: flex;
   align-items: baseline;
   gap: 6px 12px;
-}
-.tl-row {
-  flex-wrap: wrap;
 }
 .tl-label {
   font-size: var(--t-base);
@@ -848,6 +830,9 @@
 }
 .kv-value {
   color: var(--muted);
+}
+.edu-meta {
+  font-size: var(--t-xs);
 }
 .kv-link {
   display: inline-flex;

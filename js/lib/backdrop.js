@@ -5,11 +5,23 @@
 //   - the lattice cell under the pointer is "addressed": its row and column light up
 //     and the dots around it glow;
 //   - bands of brighter dots sweep through while the page is scrolling;
-//   - now and then a short signal runs from dot to dot along the lattice.
+//   - now and then a short signal runs from dot to dot along the lattice;
+//   - a sparse layer of architecture block diagrams (see glyphs.js) drifts between the dots
+//     and the page. Scrolling is their clock: each stretch of scroll advances every diagram
+//     by one step, and they glow while the page moves or the pointer is close. A diagram
+//     fades out wherever it would sit behind content, so they only surface in the margins
+//     and in the gaps between sections.
 // The animation loop stops whenever nothing is moving.
 import { reducedMotion } from "./dom.js";
+import { GLYPHS, trace } from "./glyphs.js";
 
 const PARALLAX = 0.14; // lattice speed relative to the page
+const GLYPH_PARALLAX = 0.42; // diagram layer speed relative to the page
+const GLYPH_TILE = [13, 8]; // lattice cells per tile; a tile holds at most one diagram
+const GLYPH_DENSITY = 0.8; // share of tiles that hold a diagram (most are hidden behind content)
+const GLYPH_AVOID = ".hero-main, .id-card, .section-head, .section-body, .site-footer"; // content the diagrams keep clear of
+const GLYPH_REACH = 150; // px from a diagram at which the pointer starts to light it
+const CLOCK_PX = 70; // scroll distance that advances the diagrams by one step
 const GLOW_RADIUS = 190; // px around the pointer
 const LINE_REACH = 280; // px, half length of the row and column lines
 const SIGNAL_SPEED = 13; // lattice cells per second
@@ -29,7 +41,12 @@ export function initBackdrop() {
   let pitch = 28;
   let width = 0;
   let height = 0;
-  let colors = { accent: "#c2a56b", wave: "#a3a199" };
+  let colors = { accent: "#c2a56b", wave: "#a3a199", lattice: "#393d44" };
+  let labelFont = "9px monospace";
+  const spots = new Map(); // tile key -> diagram placed in that tile, or null
+  let blockers = []; // content elements the diagrams fade behind
+  let glyphsHot = false; // the pointer is on a diagram, so it keeps clocking
+  let ticks = 0; // extra clock steps earned by hovering
 
   const pointer = { x: 0, y: 0, tx: 0, ty: 0, active: false, glow: 0 };
   let lastScroll = window.scrollY;
@@ -50,7 +67,9 @@ export function initBackdrop() {
     colors = {
       accent: style.getPropertyValue("--accent").trim() || colors.accent,
       wave: style.getPropertyValue("--muted").trim() || colors.wave,
+      lattice: style.getPropertyValue("--lattice").trim() || colors.lattice,
     };
+    labelFont = `500 9px ${style.getPropertyValue("--font-mono").trim() || "monospace"}`;
   }
 
   function resize() {
@@ -60,8 +79,109 @@ export function initBackdrop() {
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    spots.clear();
     readStyle();
     wake();
+  }
+
+  // Which diagram, if any, sits in tile (tx, ty). Seeded by the tile, so the layout is
+  // the same on every visit and needs no storage.
+  function spotAt(tx, ty) {
+    const key = tx + "," + ty;
+    if (spots.has(key)) return spots.get(key);
+    let seed = (Math.imul(tx + 11, 73856093) ^ Math.imul(ty + 7, 19349663)) >>> 0;
+    const next = () => {
+      seed = (seed + 0x6d2b79f5) >>> 0;
+      let t = Math.imul(seed ^ (seed >>> 15), seed | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+    const [tw, th] = GLYPH_TILE;
+    let spot = null;
+    if (next() < GLYPH_DENSITY) {
+      // Stepping the type by tile keeps neighbouring tiles from repeating a diagram.
+      const count = GLYPHS.length;
+      const glyph = GLYPHS[(((tx * 3 + ty * 5 + Math.floor(next() * 2)) % count) + count) % count];
+      spot = {
+        glyph,
+        c: tx * tw + Math.floor(next() * (tw - Math.ceil(glyph.w))),
+        r: ty * th + Math.floor(next() * (th - Math.ceil(glyph.h))),
+      };
+    }
+    if (spots.size > 600) spots.clear();
+    spots.set(key, spot);
+    return spot;
+  }
+
+  function drawGlyphs(dt) {
+    const u = pitch;
+    const scroll = window.scrollY;
+    const q = scroll * GLYPH_PARALLAX;
+    const [tw, th] = GLYPH_TILE;
+    const ty0 = Math.floor(q / u / th) - 1;
+    const ty1 = Math.floor((q + height) / u / th);
+    const tx1 = Math.floor(width / u / tw);
+    const clock = Math.floor(scroll / CLOCK_PX + ticks);
+    let hot = false;
+
+    // Where the content is right now, with a little breathing room around it.
+    const rects = [];
+    for (const element of blockers) {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom > -40 && rect.top < height + 40) rects.push(rect);
+    }
+    const PAD = 14;
+
+    ctx.lineWidth = 1;
+    ctx.font = labelFont;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    for (let ty = ty0; ty <= ty1; ty++) {
+      for (let tx = 0; tx <= tx1; tx++) {
+        const spot = spotAt(tx, ty);
+        if (!spot) continue;
+        const { glyph, c, r } = spot;
+        const ox = X(c) + 0.5;
+        const oy = Math.round(r * u - q) + 0.5;
+        const w = glyph.w * u;
+        const h = glyph.h * u;
+        if (oy > height || oy + h < 0) continue;
+
+        // Fade by how much of the diagram is covered by content: gone at a quarter covered.
+        let covered = 0;
+        for (const rect of rects) {
+          const overlapX = Math.min(ox + w + PAD, rect.right) - Math.max(ox - PAD, rect.left);
+          const overlapY = Math.min(oy + h + PAD, rect.bottom) - Math.max(oy - PAD, rect.top);
+          if (overlapX > 0 && overlapY > 0) covered += overlapX * overlapY;
+        }
+        const show = 1 - Math.min(1, (covered / ((w + 2 * PAD) * (h + 2 * PAD))) * 4);
+        if (show < 0.03) continue;
+
+        // At rest the diagram is drawn in the lattice colour.
+        ctx.globalAlpha = 0.85 * show;
+        ctx.strokeStyle = ctx.fillStyle = colors.lattice;
+        trace(ctx, glyph.rest, ox, oy, u);
+
+        // Lit by the pointer (distance to the diagram's box) or by scrolling.
+        const dx = Math.max(ox - pointer.x, 0, pointer.x - ox - w);
+        const dy = Math.max(oy - pointer.y, 0, pointer.y - oy - h);
+        const near = pointer.glow * Math.max(0, 1 - Math.hypot(dx, dy) / GLYPH_REACH);
+        const lit = Math.max(near, energy * 0.8) * show;
+        if (lit < 0.02) continue;
+        if (near * show > 0.3) hot = true;
+
+        const count = glyph.steps.length;
+        const step = (((clock + c) % count) + count) % count;
+        ctx.strokeStyle = ctx.fillStyle = colors.accent;
+        ctx.globalAlpha = lit * 0.3;
+        trace(ctx, glyph.rest, ox, oy, u);
+        ctx.globalAlpha = lit * 0.95;
+        trace(ctx, glyph.steps[step], ox, oy, u);
+      }
+    }
+
+    glyphsHot = hot;
+    if (hot) ticks += dt * 3.5;
   }
 
   function newSignal(p) {
@@ -219,6 +339,7 @@ export function initBackdrop() {
 
     ctx.globalAlpha = 1;
     ctx.clearRect(0, 0, width, height);
+    drawGlyphs(dt);
     if (energy > 0.01) drawWave(p);
     if (pointer.glow > 0.01) drawPointer(p);
     if (signals.length) drawSignals(p, dt);
@@ -226,7 +347,7 @@ export function initBackdrop() {
     const pointerMoving =
       Math.abs(pointer.tx - pointer.x) + Math.abs(pointer.ty - pointer.y) > 0.4 ||
       Math.abs((pointer.active ? 1 : 0) - pointer.glow) > 0.01;
-    if (energy > 0.01 || pointerMoving || signals.length) {
+    if (energy > 0.01 || pointerMoving || signals.length || glyphsHot) {
       requestAnimationFrame(frame);
     } else {
       running = false;
@@ -270,6 +391,13 @@ export function initBackdrop() {
       wake();
     }
   });
+  // The page content arrives after the first paint and changes height when rows open.
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(() => {
+      blockers = [...document.querySelectorAll(GLYPH_AVOID)];
+      wake();
+    }).observe(document.body);
+  }
   // Colours follow the theme toggle.
   new MutationObserver(() => {
     readStyle();

@@ -1,4 +1,4 @@
-// Background: coursework in three columns, then recognition and teaching as label/value rows.
+// Background: the degree, coursework in three columns, then recognition and teaching as label/value rows.
 import { html, mount } from "../lib/dom.js";
 import { icons } from "../lib/icons.js";
 
@@ -9,11 +9,27 @@ const COURSE_GROUPS = {
 };
 
 export function renderBackground(el, data) {
-  const { achievements, coursework } = data;
+  const { education, achievements, coursework } = data;
 
   mount(
     el,
     html`
+      <div class="bg-block" data-reveal>
+        <h3 class="label">Education</h3>
+        <ul class="kv-list">
+          ${education.map(
+            (item) => html`
+              <li>
+                <span class="kv-key">${item.degree}</span>
+                <span class="kv-value">
+                  ${item.institution}<br />
+                  <span class="mono edu-meta">${[`${item.start} – ${item.end}`, item.grade].filter(Boolean).join(" · ")}</span>
+                </span>
+              </li>
+            `
+          )}
+        </ul>
+      </div>
       <div class="bg-block" data-reveal>
         <h3 class="label">Coursework</h3>
         <div class="course-grid">

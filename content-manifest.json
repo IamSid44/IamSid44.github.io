@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-11-12",
+    "generated": "2026-11-13",
     "note": "Single content source for the site. Edit here; the page renders from this file."
   },
   "person": {
@@ -30,7 +30,7 @@
     "summary": "That curiosity has taken me through every layer of the stack, from attention mechanisms and LLM serving down to memory systems, processors and accelerator design.",
     "about": [
       "I work on AI systems and hardware architectures because the best ideas tend to show up where the two meet, and because I enjoy what Fred Brooks called “the sheer joy of making things.”",
-      "My main interests today are hardware accelerators and computer architecture. At CVEST, IIIT Hyderabad, I am exploring hardware architectures for datacenter-scale computing in a collaborative project with Google Silicon. My earlier research there was in probabilistic computing, on compute-in-memory circuits, and led to two IEEE papers.",
+      "My main interests today are hardware accelerators and computer architecture. I am currently exploring datacenter-scale computing at CVEST, IIIT Hyderabad. My earlier research there was in probabilistic computing, on compute-in-memory circuits, and led to two IEEE papers.",
       "When I am not building, I am watching Formula 1 or keeping up with tech and current affairs."
     ],
     "research_interests": [
@@ -69,7 +69,7 @@
       "end": null,
       "date_label": "Apr 2025 – Present",
       "bullets": [
-        "Explored ternary-weight (BitNet) LLM inference toward a multiplication-free accelerator; now exploring hardware architectures for datacenter-scale computing in a collaborative project with Google Silicon.",
+        "Explored ternary-weight (BitNet) LLM inference toward a multiplication-free accelerator; now exploring hardware architectures for datacenter-scale computing.",
         "Co-designed ProbSplat, a 6T floating-gate inverter-array compute-in-memory macro that evaluates 3-D Gaussian-mixture log-likelihoods as column current, with threshold-voltage programming that sets each Gaussian's mean and variance almost independently.",
         "Mapped trained Gaussian-splatting scenes onto int8 precision with opacity pruning, and projected about 18 pJ per 4-bit inference from an ADC, DAC and array breakdown."
       ],

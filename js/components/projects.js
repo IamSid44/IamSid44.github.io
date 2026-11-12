@@ -1,7 +1,6 @@
-// Project index: search box, domain filter, stack tag matrix, and rows that expand in place.
+// Project index: search box, domain filter, and rows that expand in place.
 import { html, mount, reducedMotion } from "../lib/dom.js";
 import { icons } from "../lib/icons.js";
-import { setOpen } from "../lib/interactions.js";
 
 function projectRow(project, index) {
   const id = `project-${project.id}`;
@@ -41,11 +40,6 @@ function projectRow(project, index) {
                     </dl>
                   `
                 : ""}
-              <div class="chip-row" aria-label="Stack">
-                ${project.stack.map(
-                  (tag) => html`<button class="chip" type="button" data-tag="${tag}" aria-pressed="false" title="Filter by ${tag}">${tag}</button>`
-                )}
-              </div>
               <a class="btn btn-sm" href="${project.repo}" target="_blank" rel="noopener">Repository ${icons.external}</a>
             </div>
           </div>
@@ -58,10 +52,6 @@ function projectRow(project, index) {
 export function renderProjects(el, data) {
   const { projects, filters } = data;
 
-  // Stack tags ordered by how many projects use them, then alphabetically.
-  const tagCounts = new Map();
-  projects.forEach((p) => p.stack.forEach((t) => tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1)));
-  const tags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
   const domains = filters.domain.filter((d) => projects.some((p) => p.domain === d));
   const domainCount = (d) => projects.filter((p) => p.domain === d).length;
 
@@ -88,25 +78,6 @@ export function renderProjects(el, data) {
             )}
           </div>
         </div>
-
-        <div class="filter-row">
-          <button class="label filter-toggle" type="button" data-toggle aria-expanded="true" aria-controls="stack-tags">
-            Stack <span class="chev">${icons.chevron}</span>
-          </button>
-          <div class="collapse" id="stack-tags" data-open="true">
-            <div class="collapse-inner">
-              <div class="chip-row" role="group" aria-label="Filter by stack">
-                ${tags.map(
-                  ([tag, count]) => html`
-                    <button class="chip" type="button" data-tag="${tag}" aria-pressed="false">
-                      ${tag}${count > 1 ? html` <span class="count">${count}</span>` : ""}
-                    </button>
-                  `
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <ul class="project-list">${projects.map(projectRow)}</ul>
@@ -114,12 +85,7 @@ export function renderProjects(el, data) {
     `
   );
 
-  // On small screens the tag matrix starts closed so the list is reachable.
-  if (window.matchMedia("(max-width: 860px)").matches) {
-    setOpen(el.querySelector(".filter-toggle"), false);
-  }
-
-  const state = { domain: "all", tags: new Set(), query: "" };
+  const state = { domain: "all", query: "" };
   const rows = new Map(projects.map((p) => [p.id, el.querySelector(`[data-project="${p.id}"]`)]));
   const haystack = new Map(
     projects.map((p) => [p.id, [p.title, p.one_liner, p.domain, p.kind, p.context, ...p.stack, ...p.bullets].join(" ").toLowerCase()])
@@ -131,7 +97,6 @@ export function renderProjects(el, data) {
 
   const matches = (p) =>
     (state.domain === "all" || p.domain === state.domain) &&
-    (state.tags.size === 0 || p.stack.some((t) => state.tags.has(t))) &&
     (state.query === "" || state.query.split(/\s+/).every((word) => haystack.get(p.id).includes(word)));
 
   const paint = () => {
@@ -146,9 +111,8 @@ export function renderProjects(el, data) {
     });
     countEl.textContent = shown;
     emptyEl.hidden = shown !== 0;
-    clearButton.disabled = state.domain === "all" && state.tags.size === 0 && state.query === "";
+    clearButton.disabled = state.domain === "all" && state.query === "";
     el.querySelectorAll("[data-domain]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.domain === state.domain)));
-    el.querySelectorAll("[data-tag]").forEach((b) => b.setAttribute("aria-pressed", String(state.tags.has(b.dataset.tag))));
   };
 
   // Cross-fade the list where the browser supports view transitions.
@@ -161,16 +125,10 @@ export function renderProjects(el, data) {
 
   el.addEventListener("click", (event) => {
     const domain = event.target.closest("[data-domain]");
-    const tag = event.target.closest("[data-tag]");
     if (domain) {
       state.domain = domain.dataset.domain;
-    } else if (tag) {
-      const name = tag.dataset.tag;
-      if (state.tags.has(name)) state.tags.delete(name);
-      else state.tags.add(name);
     } else if (event.target.closest("[data-clear]")) {
       state.domain = "all";
-      state.tags.clear();
       state.query = "";
       searchInput.value = "";
     } else {

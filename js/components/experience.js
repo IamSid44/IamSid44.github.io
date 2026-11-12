@@ -1,4 +1,4 @@
-// Experience: each role is an accordion row; education closes the list as a plain row.
+// Experience: each role is an accordion row.
 import { html, mount } from "../lib/dom.js";
 import { icons } from "../lib/icons.js";
 
@@ -34,23 +34,6 @@ function role(item) {
   `;
 }
 
-function degree(item) {
-  const detail = [item.institution, item.grade].filter(Boolean);
-  return html`
-    <li class="tl-item" data-reveal>
-      <p class="tl-date mono">${item.start} – ${item.end}</p>
-      <span class="tl-node" aria-hidden="true"></span>
-      <div class="tl-body">
-        <div class="tl-row">
-          <h3 class="tl-label">${item.degree}</h3>
-          <span class="label tl-kind">Education</span>
-        </div>
-        <p class="tl-detail">${detail.join(" · ")}</p>
-      </div>
-    </li>
-  `;
-}
-
 export function renderExperience(el, data) {
-  mount(el, html`<ol class="timeline">${data.experience.map(role)}${data.education.map(degree)}</ol>`);
+  mount(el, html`<ol class="timeline">${data.experience.map(role)}</ol>`);
 }
