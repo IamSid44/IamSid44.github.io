@@ -3,8 +3,8 @@ import { html, mount } from "../lib/dom.js";
 import { icons } from "../lib/icons.js";
 
 const LINKS = [
+  ["about", "About"],
   ["research", "Research"],
-  ["demo", "Demo"],
   ["projects", "Projects"],
   ["experience", "Experience"],
   ["contact", "Contact"],
@@ -45,6 +45,7 @@ export function renderNav(el, data) {
           </button>
         </div>
       </div>
+      <span class="nav-progress" aria-hidden="true"></span>
     `
   );
 
@@ -107,8 +108,20 @@ export function renderNav(el, data) {
     }
   }
 
-  // Hairline under the header appears once the page has scrolled.
-  const onScroll = () => el.classList.toggle("is-scrolled", window.scrollY > 8);
-  onScroll();
+  // Once the page has scrolled, a hairline appears under the header and a brass
+  // line along it shows how far down the page the reader is.
+  const progress = el.querySelector(".nav-progress");
+  let frame = 0;
+  const update = () => {
+    frame = 0;
+    const range = document.documentElement.scrollHeight - window.innerHeight;
+    el.classList.toggle("is-scrolled", window.scrollY > 8);
+    progress.style.transform = `scaleX(${range > 0 ? Math.min(1, window.scrollY / range).toFixed(4) : 0})`;
+  };
+  const onScroll = () => {
+    if (!frame) frame = requestAnimationFrame(update);
+  };
+  update();
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
 }

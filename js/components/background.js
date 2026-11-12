@@ -1,4 +1,4 @@
-// Background: recognition and positions as label/value rows, then tools and coursework.
+// Background: coursework in three columns, then recognition and teaching as label/value rows.
 import { html, mount } from "../lib/dom.js";
 import { icons } from "../lib/icons.js";
 
@@ -8,68 +8,41 @@ const COURSE_GROUPS = {
   math_signals: "Mathematics and signals",
 };
 
-function rows(items) {
-  return html`
-    <ul class="kv-list">
-      ${items.map(
-        (item) => html`
-          <li>
-            <span class="kv-key">${item.label}</span>
-            <span class="kv-value">
-              ${item.text}
-              ${item.link ? html` <a href="${item.link}" target="_blank" rel="noopener" class="kv-link">Profile ${icons.external}</a>` : ""}
-            </span>
-          </li>
-        `
-      )}
-    </ul>
-  `;
-}
-
 export function renderBackground(el, data) {
-  const { achievements, skills, coursework } = data;
-  const awards = achievements.filter((a) => a.group === "award");
-  const positions = achievements.filter((a) => a.group === "position");
+  const { achievements, coursework } = data;
 
   mount(
     el,
     html`
       <div class="bg-block" data-reveal>
-        <h3 class="label">Recognition</h3>
-        ${rows(awards)}
+        <h3 class="label">Coursework</h3>
+        <div class="course-grid">
+          ${Object.entries(COURSE_GROUPS).map(
+            ([key, title]) => html`
+              <div class="course-group">
+                <h4>${title}</h4>
+                <ul>${(coursework[key] ?? []).map((course) => html`<li>${course}</li>`)}</ul>
+              </div>
+            `
+          )}
+        </div>
+        ${coursework.note ? html`<p class="bg-note">${coursework.note}</p>` : ""}
       </div>
       <div class="bg-block" data-reveal>
-        <h3 class="label">Positions</h3>
-        ${rows(positions)}
-      </div>
-      <div class="bg-split">
-        <div class="bg-block" data-reveal>
-          <h3 class="label">Tools</h3>
-          <dl class="group-list">
-            ${Object.entries(skills).map(
-              ([group, items]) => html`
-                <div>
-                  <dt>${group}</dt>
-                  <dd class="chip-row">${items.map((s) => html`<span class="chip">${s}</span>`)}</dd>
-                </div>
-              `
-            )}
-          </dl>
-        </div>
-        <div class="bg-block" data-reveal>
-          <h3 class="label">Coursework</h3>
-          <dl class="group-list">
-            ${Object.entries(COURSE_GROUPS).map(
-              ([key, title]) => html`
-                <div>
-                  <dt>${title}</dt>
-                  <dd>${(coursework[key] ?? []).join(" · ")}</dd>
-                </div>
-              `
-            )}
-          </dl>
-          ${coursework.note ? html`<p class="bg-note">${coursework.note}</p>` : ""}
-        </div>
+        <h3 class="label">Recognition and teaching</h3>
+        <ul class="kv-list">
+          ${achievements.map(
+            (item) => html`
+              <li>
+                <span class="kv-key">${item.label}</span>
+                <span class="kv-value">
+                  ${item.text}
+                  ${item.link ? html` <a href="${item.link}" target="_blank" rel="noopener" class="kv-link">Profile ${icons.external}</a>` : ""}
+                </span>
+              </li>
+            `
+          )}
+        </ul>
       </div>
     `
   );

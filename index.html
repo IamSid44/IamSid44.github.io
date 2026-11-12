@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Siddarth Gottumukkula · Hardware/software co-design for AI</title>
-  <meta name="description" content="Siddarth Gottumukkula is an undergraduate researcher at IIIT Hyderabad working on hardware/software co-design for AI: compute-in-memory circuits, accelerator architecture and ML systems.">
+  <title>Siddarth Gottumukkula · Hardware accelerators and computer architecture</title>
+  <meta name="description" content="Siddarth Gottumukkula is an undergraduate researcher at IIIT Hyderabad working on hardware accelerators, computer architecture and the AI systems that run on them.">
   <meta name="author" content="Siddarth Gottumukkula">
   <link rel="canonical" href="https://iamsid44.github.io/">
 
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Siddarth Gottumukkula">
-  <meta property="og:description" content="Hardware/software co-design for AI: compute-in-memory circuits, accelerator architecture and ML systems.">
+  <meta property="og:description" content="Hardware accelerators, computer architecture and the AI systems that run on them.">
   <meta property="og:url" content="https://iamsid44.github.io/">
   <meta property="og:image" content="https://iamsid44.github.io/assets/portrait-600.jpg">
   <meta name="twitter:card" content="summary">
@@ -42,13 +42,13 @@
   <link rel="modulepreload" href="js/lib/dom.js">
   <link rel="modulepreload" href="js/lib/icons.js">
   <link rel="modulepreload" href="js/lib/interactions.js">
-  <link rel="modulepreload" href="js/lib/gmm.js">
+  <link rel="modulepreload" href="js/lib/backdrop.js">
   <link rel="modulepreload" href="js/components/nav.js">
   <link rel="modulepreload" href="js/components/hero.js">
+  <link rel="modulepreload" href="js/components/about.js">
   <link rel="modulepreload" href="js/components/research.js">
-  <link rel="modulepreload" href="js/components/sandbox.js">
   <link rel="modulepreload" href="js/components/projects.js">
-  <link rel="modulepreload" href="js/components/timeline.js">
+  <link rel="modulepreload" href="js/components/experience.js">
   <link rel="modulepreload" href="js/components/background.js">
   <link rel="modulepreload" href="js/components/footer.js">
   <script type="module" src="js/main.js"></script>
@@ -69,6 +69,12 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- Dot lattice behind the page; js/lib/backdrop.js makes it react to the pointer and to scrolling. -->
+  <div class="backdrop" aria-hidden="true">
+    <div class="backdrop-grid"></div>
+    <canvas class="backdrop-canvas"></canvas>
+  </div>
+
   <header class="site-header" data-slot="nav"></header>
 
   <main id="main">
@@ -84,23 +90,23 @@
       </div>
     </section>
 
+    <section id="about" class="section" aria-labelledby="h-about">
+      <div class="wrap section-grid">
+        <header class="section-head" data-reveal>
+          <h2 id="h-about">About</h2>
+          <p>Hardware accelerators and computer architecture, and the AI systems that run on them.</p>
+        </header>
+        <div class="section-body" data-slot="about"></div>
+      </div>
+    </section>
+
     <section id="research" class="section" aria-labelledby="h-research">
       <div class="wrap section-grid">
         <header class="section-head" data-reveal>
           <h2 id="h-research">Research</h2>
-          <p>Compute-in-memory circuits for probabilistic computing, with Dr. Priyesh Shukla at CVEST.</p>
+          <p>Papers from my earlier work on compute-in-memory circuits for probabilistic computing.</p>
         </header>
         <div class="section-body" data-slot="research"></div>
-      </div>
-    </section>
-
-    <section id="demo" class="section" aria-labelledby="h-demo">
-      <div class="wrap section-grid">
-        <header class="section-head" data-reveal>
-          <h2 id="h-demo">Column current</h2>
-          <p>A toy model of the idea behind ProbSplat. Each column stores one Gaussian; its current says how likely the probe point is under it.</p>
-        </header>
-        <div class="section-body" data-slot="sandbox"></div>
       </div>
     </section>
 
@@ -118,9 +124,9 @@
       <div class="wrap section-grid">
         <header class="section-head" data-reveal>
           <h2 id="h-experience">Experience</h2>
-          <p>2023 to 2027, most recent first. Roles open for detail.</p>
+          <p>Research, industry and education. Roles open for detail.</p>
         </header>
-        <div class="section-body" data-slot="timeline"></div>
+        <div class="section-body" data-slot="experience"></div>
       </div>
     </section>
 
@@ -128,7 +134,7 @@
       <div class="wrap section-grid">
         <header class="section-head" data-reveal>
           <h2 id="h-background">Background</h2>
-          <p>Recognition, positions, coursework and tools.</p>
+          <p>Coursework, recognition and teaching.</p>
         </header>
         <div class="section-body" data-slot="background"></div>
       </div>

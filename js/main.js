@@ -1,27 +1,30 @@
 // Entry point: load the content manifest, render each section into its slot,
-// then wire the page-wide interactions.
+// then wire the page-wide interactions and the backdrop.
 import { renderNav } from "./components/nav.js";
 import { renderHero } from "./components/hero.js";
+import { renderAbout } from "./components/about.js";
 import { renderResearch } from "./components/research.js";
-import { renderSandbox } from "./components/sandbox.js";
 import { renderProjects } from "./components/projects.js";
-import { renderTimeline } from "./components/timeline.js";
+import { renderExperience } from "./components/experience.js";
 import { renderBackground } from "./components/background.js";
 import { renderFooter } from "./components/footer.js";
-import { initToggles, initCopy, initReveal, initOpenLinks } from "./lib/interactions.js";
+import { initToggles, initCopy, initReveal, initOpenLinks, initSectionPulse } from "./lib/interactions.js";
+import { initBackdrop } from "./lib/backdrop.js";
 
 const SECTIONS = {
   nav: renderNav,
   hero: renderHero,
+  about: renderAbout,
   research: renderResearch,
-  sandbox: renderSandbox,
   projects: renderProjects,
-  timeline: renderTimeline,
+  experience: renderExperience,
   background: renderBackground,
   footer: renderFooter,
 };
 
 async function start() {
+  initBackdrop(); // does not depend on the content
+
   let data;
   try {
     const response = await fetch("content-manifest.json");
@@ -52,6 +55,7 @@ async function start() {
   initCopy();
   initOpenLinks();
   initReveal();
+  initSectionPulse();
   document.documentElement.classList.add("is-ready");
 }
 

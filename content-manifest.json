@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-11-10",
+    "generated": "2026-11-12",
     "note": "Single content source for the site. Edit here; the page renders from this file."
   },
   "person": {
@@ -8,7 +8,7 @@
     "short_name": "Siddarth",
     "initials": "SG",
     "handle": "IamSid44",
-    "role": "Undergraduate researcher, hardware/software co-design for AI",
+    "role": "Hardware accelerators and computer architecture",
     "affiliation": "International Institute of Information Technology, Hyderabad",
     "location": "Hyderabad, India",
     "photo": {
@@ -22,48 +22,27 @@
       "linkedin": "https://www.linkedin.com/in/siddarth-gottumukkula/",
       "codeforces": "https://codeforces.com/profile/IamSid44",
       "cv_pdf": "assets/Siddarth_Gottumukkula_CV.pdf"
-    }
+    },
+    "focus": "Hardware accelerators and computer architecture"
   },
   "bio": {
-    "tagline": "Systems for AI, and AI for systems.",
-    "summary": "Final-year Electronics and Communication Engineering student at IIIT Hyderabad working on hardware/software co-design for AI: compute-in-memory circuits, accelerator architecture, and the ML systems that run on them.",
-    "long": [
-      "I am an undergraduate researcher at CVEST, IIIT Hyderabad, advised by Dr. Priyesh Shukla. My main work is ProbSplat, a floating-gate compute-in-memory macro that evaluates Gaussian-mixture log-likelihoods directly as column current, presented at IEEE ISVLSI 2026.",
-      "Around that, I have explored ternary-weight (BitNet) LLM inference toward a multiplication-free accelerator, and I am now exploring hardware architectures for datacenter-scale computing in a collaborative project with Google Silicon.",
-      "I like working across the stack: circuits and processors on one side, transformers, optimizers and distributed systems on the other, and compilers in between."
+    "tagline": "I like finding out where the time and energy go when AI runs.",
+    "summary": "That curiosity has taken me through every layer of the stack, from attention mechanisms and LLM serving down to memory systems, processors and accelerator design.",
+    "about": [
+      "I work on AI systems and hardware architectures because the best ideas tend to show up where the two meet, and because I enjoy what Fred Brooks called “the sheer joy of making things.”",
+      "My main interests today are hardware accelerators and computer architecture. At CVEST, IIIT Hyderabad, I am exploring hardware architectures for datacenter-scale computing in a collaborative project with Google Silicon. My earlier research there was in probabilistic computing, on compute-in-memory circuits, and led to two IEEE papers.",
+      "When I am not building, I am watching Formula 1 or keeping up with tech and current affairs."
     ],
     "research_interests": [
-      "Hardware/Software Co-design",
-      "Systems for AI",
-      "AI for Systems",
       "Hardware Accelerators",
       "Computer Architecture",
-      "Machine Learning",
-      "Datacenter-Scale Computing"
+      "Hardware/Software Co-design",
+      "Systems for AI",
+      "Datacenter-Scale Computing",
+      "AI for Systems",
+      "Machine Learning"
     ],
-    "highlights": [
-      {
-        "value": "2",
-        "label": "IEEE publications",
-        "detail": "ISVLSI 2026 (first author), ICEDGE 2025"
-      },
-      {
-        "value": "9.68",
-        "label": "CGPA out of 10",
-        "detail": "Dean's List every semester to date"
-      },
-      {
-        "value": "18 pJ",
-        "label": "per 4-bit inference",
-        "detail": "ProbSplat log-likelihood evaluation"
-      },
-      {
-        "value": "1st",
-        "label": "Megathon 2025",
-        "detail": "IntelliStay churn retention platform"
-      }
-    ],
-    "off_the_clock": "Formula 1 on a Sunday, tech news, and keeping up with current affairs."
+    "contact_line": "If you are working on something in this space, or simply enjoy a good conversation, I would love to connect!"
   },
   "education": [
     {
@@ -84,25 +63,22 @@
       "kind": "research",
       "role": "Undergraduate Student Researcher",
       "org": "CVEST, IIIT Hyderabad",
-      "detail": "Hardware/software co-design for AI, advised by Dr. Priyesh Shukla",
+      "detail": "Advised by Dr. Priyesh Shukla",
       "location": "Hyderabad, India",
       "start": "2025-04",
       "end": null,
-      "date_label": "April 2025 – Present",
+      "date_label": "Apr 2025 – Present",
       "bullets": [
+        "Explored ternary-weight (BitNet) LLM inference toward a multiplication-free accelerator; now exploring hardware architectures for datacenter-scale computing in a collaborative project with Google Silicon.",
         "Co-designed ProbSplat, a 6T floating-gate inverter-array compute-in-memory macro that evaluates 3-D Gaussian-mixture log-likelihoods as column current, with threshold-voltage programming that sets each Gaussian's mean and variance almost independently.",
-        "Mapped trained Gaussian-splatting scenes onto int8 precision with opacity pruning, and projected about 18 pJ per 4-bit inference from an ADC, DAC and array breakdown.",
-        "Explored ternary-weight (BitNet) LLM inference toward a multiplication-free accelerator; now exploring hardware architectures for datacenter-scale computing in a collaborative project with Google Silicon."
+        "Mapped trained Gaussian-splatting scenes onto int8 precision with opacity pruning, and projected about 18 pJ per 4-bit inference from an ADC, DAC and array breakdown."
       ],
       "tags": [
+        "Accelerators",
         "Compute-in-Memory",
-        "Probabilistic Computing",
-        "Accelerators"
+        "Probabilistic Computing"
       ],
-      "related": [
-        "pub:probsplat",
-        "pub:probcims"
-      ]
+      "open": true
     },
     {
       "id": "ti",
@@ -112,7 +88,7 @@
       "location": "Bengaluru, India",
       "start": "2026-05",
       "end": "2026-07",
-      "date_label": "May 2026 – July 2026",
+      "date_label": "May 2026 – Jul 2026",
       "bullets": [
         "Cut ATE test time by about 50% by restructuring the C++ tester program to run independent test sequences in parallel.",
         "Built Python pipelines over tester and bench logs for statistical test-limit guard-banding in Spotfire, combining variances in quadrature, and correlated tester and bench data across test insertions for a yield study."
@@ -122,68 +98,6 @@
         "Python",
         "Test Engineering"
       ]
-    }
-  ],
-  "timeline": [
-    {
-      "date_label": "Apr 2025 – Present",
-      "kind": "research",
-      "label": "Undergraduate researcher, CVEST",
-      "detail": "Hardware/software co-design for AI with Dr. Priyesh Shukla",
-      "ref": "experience:cvest",
-      "open": true
-    },
-    {
-      "date_label": "2026",
-      "kind": "award",
-      "label": "Research Award, IIIT Hyderabad",
-      "detail": "AY 2025–26, for the ISVLSI 2026 paper on ProbSplat"
-    },
-    {
-      "date_label": "2026",
-      "kind": "publication",
-      "label": "ProbSplat presented at IEEE ISVLSI 2026",
-      "detail": "First author",
-      "ref": "pub:probsplat"
-    },
-    {
-      "date_label": "May – Jul 2026",
-      "kind": "industry",
-      "label": "Intern, Texas Instruments",
-      "detail": "Analog Test & Validation, Bengaluru",
-      "ref": "experience:ti"
-    },
-    {
-      "date_label": "2025",
-      "kind": "award",
-      "label": "Megathon 2025 winner",
-      "detail": "IntelliStay, an AI churn prediction and retention platform",
-      "ref": "project:intellistay"
-    },
-    {
-      "date_label": "2025",
-      "kind": "publication",
-      "label": "ProbCIMs published at IEEE ICEDGE 2025",
-      "detail": "Co-author",
-      "ref": "pub:probcims"
-    },
-    {
-      "date_label": "Jul – Oct 2025",
-      "kind": "service",
-      "label": "Apex Mentor, IIIT-H",
-      "detail": "Guided first-year students academically and socially"
-    },
-    {
-      "date_label": "2023 – 2024",
-      "kind": "service",
-      "label": "Public Relations Team, E-Cell IIIT-H",
-      "detail": "Speaker outreach and coordination for flagship events"
-    },
-    {
-      "date_label": "2023 – 2027",
-      "kind": "education",
-      "label": "B.Tech (Honors), Electronics and Communication Engineering",
-      "detail": "IIIT Hyderabad · CGPA 9.68/10 · Dean's List in every semester to date"
     }
   ],
   "publications": [
@@ -586,16 +500,6 @@
       "label": "Teaching Assistant, IIIT-H",
       "text": "Probability & Random Processes, Processor Architecture, Coding Theory.",
       "group": "position"
-    },
-    {
-      "label": "Apex Mentor, IIIT-H",
-      "text": "Guided first-year students academically and socially (July – Oct 2025).",
-      "group": "position"
-    },
-    {
-      "label": "Public Relations Team, E-Cell IIIT-H",
-      "text": "Speaker outreach and coordination for flagship events (2023 – 2024).",
-      "group": "position"
     }
   ],
   "coursework": {
@@ -620,42 +524,6 @@
       "Signal Detection & Estimation Theory",
       "Real Analysis",
       "Functional Analysis"
-    ]
-  },
-  "skills": {
-    "Languages": [
-      "C",
-      "C++",
-      "Python",
-      "Bash",
-      "SystemVerilog",
-      "Verilog",
-      "SystemC",
-      "Racket",
-      "MATLAB"
-    ],
-    "ML & Systems": [
-      "PyTorch",
-      "Hugging Face",
-      "PEFT/LoRA",
-      "vLLM",
-      "scikit-learn",
-      "XGBoost",
-      "NumPy",
-      "MPI",
-      "gRPC"
-    ],
-    "Hardware & Tools": [
-      "NGSpice",
-      "MAGIC",
-      "Xilinx Vivado",
-      "FPGA",
-      "Spotfire",
-      "Slurm",
-      "Git",
-      "Linux",
-      "W&B",
-      "LaTeX"
     ]
   }
 }

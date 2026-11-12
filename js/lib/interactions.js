@@ -99,6 +99,26 @@ export function initReveal(root = document) {
   targets.forEach((el) => observer.observe(el));
 }
 
+// Sections get .is-entered while their top edge is on screen, which replays the
+// pulse along the section rule each time the reader scrolls to a new section.
+export function initSectionPulse(root = document) {
+  if (!("IntersectionObserver" in window)) return;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) entry.target.parentElement.classList.toggle("is-entered", entry.isIntersecting);
+    },
+    { rootMargin: "-56px 0px -10% 0px" }
+  );
+  root.querySelectorAll(".section").forEach((section) => {
+    // Watch a zero-height marker at the section's top edge, not the whole section.
+    const marker = document.createElement("span");
+    marker.className = "section-edge";
+    marker.setAttribute("aria-hidden", "true");
+    section.prepend(marker);
+    observer.observe(marker);
+  });
+}
+
 // In-page links with data-open="element-id" expand their target before scrolling to it.
 export function initOpenLinks(root = document) {
   root.addEventListener("click", (event) => {

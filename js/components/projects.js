@@ -153,8 +153,10 @@ export function renderProjects(el, data) {
 
   // Cross-fade the list where the browser supports view transitions.
   const update = () => {
-    if (document.startViewTransition && !reducedMotion()) document.startViewTransition(paint);
-    else paint();
+    if (document.startViewTransition && !reducedMotion()) {
+      // A second filter click before the fade ends skips the first fade; that is fine.
+      document.startViewTransition(paint).ready.catch(() => {});
+    } else paint();
   };
 
   el.addEventListener("click", (event) => {

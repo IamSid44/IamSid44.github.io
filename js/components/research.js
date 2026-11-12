@@ -51,7 +51,6 @@ function publication(pub, selfName) {
               </button>
             `
           : ""}
-        ${pub.id === "probsplat" ? html`<a class="btn btn-sm btn-quiet" href="#demo">Try the idea ${icons.down}</a>` : ""}
       </div>
 
       ${hasDetail
@@ -74,16 +73,6 @@ function publication(pub, selfName) {
 }
 
 export function renderResearch(el, data) {
-  const { bio, publications, person } = data;
-  mount(
-    el,
-    html`
-      <div class="prose" data-reveal>${bio.long.map((p) => html`<p>${p}</p>`)}</div>
-      <div class="interest-row" data-reveal>
-        <span class="label">Interests</span>
-        <div class="chip-row">${bio.research_interests.map((i) => html`<span class="chip">${i}</span>`)}</div>
-      </div>
-      <ol class="pub-list">${publications.map((pub) => publication(pub, person.name))}</ol>
-    `
-  );
+  const { publications, person } = data;
+  mount(el, html`<ol class="pub-list">${publications.map((pub) => publication(pub, person.name))}</ol>`);
 }
