@@ -1,0 +1,661 @@
+{
+  "meta": {
+    "generated": "2026-11-10",
+    "note": "Single content source for the site. Edit here; the page renders from this file."
+  },
+  "person": {
+    "name": "Siddarth Gottumukkula",
+    "short_name": "Siddarth",
+    "initials": "SG",
+    "handle": "IamSid44",
+    "role": "Undergraduate researcher, hardware/software co-design for AI",
+    "affiliation": "International Institute of Information Technology, Hyderabad",
+    "location": "Hyderabad, India",
+    "photo": {
+      "webp": "assets/portrait-144.webp 1x, assets/portrait-288.webp 2x",
+      "jpg": "assets/portrait-144.jpg",
+      "jpg2x": "assets/portrait-288.jpg"
+    },
+    "links": {
+      "email": "siddarth.g@students.iiit.ac.in",
+      "github": "https://github.com/IamSid44",
+      "linkedin": "https://www.linkedin.com/in/siddarth-gottumukkula/",
+      "codeforces": "https://codeforces.com/profile/IamSid44",
+      "cv_pdf": "assets/Siddarth_Gottumukkula_CV.pdf"
+    }
+  },
+  "bio": {
+    "tagline": "Systems for AI, and AI for systems.",
+    "summary": "Final-year Electronics and Communication Engineering student at IIIT Hyderabad working on hardware/software co-design for AI: compute-in-memory circuits, accelerator architecture, and the ML systems that run on them.",
+    "long": [
+      "I am an undergraduate researcher at CVEST, IIIT Hyderabad, advised by Dr. Priyesh Shukla. My main work is ProbSplat, a floating-gate compute-in-memory macro that evaluates Gaussian-mixture log-likelihoods directly as column current, presented at IEEE ISVLSI 2026.",
+      "Around that, I have explored ternary-weight (BitNet) LLM inference toward a multiplication-free accelerator, and I am now exploring hardware architectures for datacenter-scale computing in a collaborative project with Google Silicon.",
+      "I like working across the stack: circuits and processors on one side, transformers, optimizers and distributed systems on the other, and compilers in between."
+    ],
+    "research_interests": [
+      "Hardware/Software Co-design",
+      "Systems for AI",
+      "AI for Systems",
+      "Hardware Accelerators",
+      "Computer Architecture",
+      "Machine Learning",
+      "Datacenter-Scale Computing"
+    ],
+    "highlights": [
+      {
+        "value": "2",
+        "label": "IEEE publications",
+        "detail": "ISVLSI 2026 (first author), ICEDGE 2025"
+      },
+      {
+        "value": "9.68",
+        "label": "CGPA out of 10",
+        "detail": "Dean's List every semester to date"
+      },
+      {
+        "value": "18 pJ",
+        "label": "per 4-bit inference",
+        "detail": "ProbSplat log-likelihood evaluation"
+      },
+      {
+        "value": "1st",
+        "label": "Megathon 2025",
+        "detail": "IntelliStay churn retention platform"
+      }
+    ],
+    "off_the_clock": "Formula 1 on a Sunday, tech news, and keeping up with current affairs."
+  },
+  "education": [
+    {
+      "id": "iiith",
+      "institution": "International Institute of Information Technology, Hyderabad",
+      "degree": "B.Tech (Honors) in Electronics and Communication Engineering",
+      "start": "2023",
+      "end": "2027",
+      "grade": "CGPA 9.68/10",
+      "notes": [
+        "Dean's List: top 5% of the department, awarded in every semester to date"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "cvest",
+      "kind": "research",
+      "role": "Undergraduate Student Researcher",
+      "org": "CVEST, IIIT Hyderabad",
+      "detail": "Hardware/software co-design for AI, advised by Dr. Priyesh Shukla",
+      "location": "Hyderabad, India",
+      "start": "2025-04",
+      "end": null,
+      "date_label": "April 2025 – Present",
+      "bullets": [
+        "Co-designed ProbSplat, a 6T floating-gate inverter-array compute-in-memory macro that evaluates 3-D Gaussian-mixture log-likelihoods as column current, with threshold-voltage programming that sets each Gaussian's mean and variance almost independently.",
+        "Mapped trained Gaussian-splatting scenes onto int8 precision with opacity pruning, and projected about 18 pJ per 4-bit inference from an ADC, DAC and array breakdown.",
+        "Explored ternary-weight (BitNet) LLM inference toward a multiplication-free accelerator; now exploring hardware architectures for datacenter-scale computing in a collaborative project with Google Silicon."
+      ],
+      "tags": [
+        "Compute-in-Memory",
+        "Probabilistic Computing",
+        "Accelerators"
+      ],
+      "related": [
+        "pub:probsplat",
+        "pub:probcims"
+      ]
+    },
+    {
+      "id": "ti",
+      "kind": "industry",
+      "role": "Analog Test & Validation Intern",
+      "org": "Texas Instruments",
+      "location": "Bengaluru, India",
+      "start": "2026-05",
+      "end": "2026-07",
+      "date_label": "May 2026 – July 2026",
+      "bullets": [
+        "Cut ATE test time by about 50% by restructuring the C++ tester program to run independent test sequences in parallel.",
+        "Built Python pipelines over tester and bench logs for statistical test-limit guard-banding in Spotfire, combining variances in quadrature, and correlated tester and bench data across test insertions for a yield study."
+      ],
+      "tags": [
+        "C++",
+        "Python",
+        "Test Engineering"
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "date_label": "Apr 2025 – Present",
+      "kind": "research",
+      "label": "Undergraduate researcher, CVEST",
+      "detail": "Hardware/software co-design for AI with Dr. Priyesh Shukla",
+      "ref": "experience:cvest",
+      "open": true
+    },
+    {
+      "date_label": "2026",
+      "kind": "award",
+      "label": "Research Award, IIIT Hyderabad",
+      "detail": "AY 2025–26, for the ISVLSI 2026 paper on ProbSplat"
+    },
+    {
+      "date_label": "2026",
+      "kind": "publication",
+      "label": "ProbSplat presented at IEEE ISVLSI 2026",
+      "detail": "First author",
+      "ref": "pub:probsplat"
+    },
+    {
+      "date_label": "May – Jul 2026",
+      "kind": "industry",
+      "label": "Intern, Texas Instruments",
+      "detail": "Analog Test & Validation, Bengaluru",
+      "ref": "experience:ti"
+    },
+    {
+      "date_label": "2025",
+      "kind": "award",
+      "label": "Megathon 2025 winner",
+      "detail": "IntelliStay, an AI churn prediction and retention platform",
+      "ref": "project:intellistay"
+    },
+    {
+      "date_label": "2025",
+      "kind": "publication",
+      "label": "ProbCIMs published at IEEE ICEDGE 2025",
+      "detail": "Co-author",
+      "ref": "pub:probcims"
+    },
+    {
+      "date_label": "Jul – Oct 2025",
+      "kind": "service",
+      "label": "Apex Mentor, IIIT-H",
+      "detail": "Guided first-year students academically and socially"
+    },
+    {
+      "date_label": "2023 – 2024",
+      "kind": "service",
+      "label": "Public Relations Team, E-Cell IIIT-H",
+      "detail": "Speaker outreach and coordination for flagship events"
+    },
+    {
+      "date_label": "2023 – 2027",
+      "kind": "education",
+      "label": "B.Tech (Honors), Electronics and Communication Engineering",
+      "detail": "IIIT Hyderabad · CGPA 9.68/10 · Dean's List in every semester to date"
+    }
+  ],
+  "publications": [
+    {
+      "id": "probsplat",
+      "title": "ProbSplat: Efficient Probabilistic Hardware for Gaussian Splatting in 3D Scene Reconstruction",
+      "authors": [
+        "Siddarth Gottumukkula",
+        "M P Samartha",
+        "Vedant Pahariya",
+        "Priyanshi Jain",
+        "Amit Ranjan Trivedi",
+        "Priyesh Shukla"
+      ],
+      "role": "First author",
+      "venue": "IEEE Computer Society Annual Symposium on VLSI (ISVLSI)",
+      "venue_short": "IEEE ISVLSI 2026",
+      "year": 2026,
+      "type": "Conference paper",
+      "status": "Presented",
+      "award": "IIIT-H Research Award (AY 2025–26)",
+      "categories": [
+        "Compute-in-Memory",
+        "Probabilistic Computing",
+        "3D Vision"
+      ],
+      "keywords": [
+        "Gaussian splatting",
+        "In-memory probabilistic computing",
+        "Programmable floating-gate inverters"
+      ],
+      "summary": "A floating-gate inverter-array compute-in-memory macro that evaluates 3-D Gaussian-mixture log-likelihoods with programmable mean and variance, as a low-energy backend for Gaussian-splatting scene reconstruction.",
+      "abstract": "This paper presents ProbSplat, a Compute-in-Memory (CIM)-inspired architecture based on programmable and energy efficient floating-gate inverter columns for probabilistic computing. Improving upon our prior work, ProbSplat programs and stores both means and variances of Gaussian mixture components, and evaluates log-likelihood for gaussian splatting during scene reconstruction with high energy efficiency, suitable for robotics and augmented/virtual reality (AR/VR) at the edge. Our proposed scheme enables independent control of both mean and variance via deterministic adjustment of floating-gate MOSFET threshold voltages, increasing the fidelity of hardware to program probability distributions. The design is simulated in 180nm CMOS on 1.8 V at 50 MHz and achieves mean–variance independence with < 2.4% deviation during 3-D Gaussian mixture modeling. Compared to conventional digital implementations, ProbSplat significantly reduces compute complexity, memory footprint, and power consumption. The scalable framework consumes 18pJ energy per log-likelihood inference with 4-bit precision while operating for 500 mixture functions in a 3-D GMM. Scene reconstruction with ProbSplat's characteristics gave satisfactory fidelity of 21.99 PSNR (dB) at 8-bit precision.",
+      "key_numbers": [
+        {
+          "value": "18 pJ",
+          "label": "per log-likelihood inference at 4-bit precision, 500 mixture functions"
+        },
+        {
+          "value": "< 2.4%",
+          "label": "mean–variance deviation in 3-D Gaussian mixture modeling"
+        },
+        {
+          "value": "21.99 dB",
+          "label": "PSNR for scene reconstruction at 8-bit precision"
+        },
+        {
+          "value": "180 nm",
+          "label": "CMOS, 1.8 V, 50 MHz (simulated)"
+        }
+      ],
+      "links": {
+        "paper": "https://arxiv.org/pdf/2608.13143",
+        "arxiv_id": "2608.13143"
+      },
+      "bibtex": "@inproceedings{gottumukkula2026probsplat,\n  title     = {ProbSplat: Efficient Probabilistic Hardware for Gaussian Splatting in 3D Scene Reconstruction},\n  author    = {Gottumukkula, Siddarth and Samartha, M P and Pahariya, Vedant and Jain, Priyanshi and Trivedi, Amit Ranjan and Shukla, Priyesh},\n  booktitle = {2026 IEEE Computer Society Annual Symposium on VLSI (ISVLSI)},\n  year      = {2026},\n  eprint    = {2608.13143},\n  archivePrefix = {arXiv}\n}"
+    },
+    {
+      "id": "probcims",
+      "title": "ProbCIMs: Compute-in-Memory Paradigms for Robust and Efficient Probabilistic Computing & AI",
+      "authors": null,
+      "role": "Co-author",
+      "venue_short": "IEEE ICEDGE 2025",
+      "year": 2025,
+      "type": "Conference paper",
+      "status": "Published",
+      "categories": [
+        "Compute-in-Memory",
+        "Probabilistic Computing"
+      ],
+      "summary": null,
+      "abstract": null,
+      "links": {
+        "paper": "https://ieeexplore.ieee.org/abstract/document/11412531/"
+      },
+      "bibtex": null
+    }
+  ],
+  "projects": [
+    {
+      "id": "clarity",
+      "title": "CLARITY: Unmasking Political Question Evasions",
+      "one_liner": "Classifying how clearly politicians answer interview questions, with a confidence-routed LLM cascade.",
+      "domain": "ML & NLP",
+      "kind": "Research project",
+      "context": "SemEval-2026 Task 6; Advanced NLP course project, team of four",
+      "stack": [
+        "PyTorch",
+        "LoRA",
+        "vLLM",
+        "Qwen3",
+        "DeBERTa-v3"
+      ],
+      "bullets": [
+        "Built a classifier for how clearly politicians answer interview questions (SemEval-2026 Task 6, 9 evasion types), comparing LoRA-tuned Qwen3-8B against DeBERTa-v3 encoder variants in controlled ablations.",
+        "Added a confidence-routed cascade: a vLLM-served LLM picks among the classifier's candidate labels for only its least-confident items, distilled into a LoRA student that matches a 10-seed ensemble at 4.7x less GPU time."
+      ],
+      "key_numbers": [
+        {
+          "value": "4.7x",
+          "label": "less GPU time than a 10-seed ensemble"
+        },
+        {
+          "value": "9",
+          "label": "evasion types"
+        }
+      ],
+      "repo": "https://github.com/IamSid44/CLARITY-Unmasking-Political-Question-Evasions",
+      "featured": true
+    },
+    {
+      "id": "anatomy-lm",
+      "title": "Anatomy of a Language Model",
+      "one_liner": "Transformers, experts, optimizers and decoding, each built by hand in PyTorch and ablated one factor at a time.",
+      "domain": "ML & NLP",
+      "kind": "Implementation study",
+      "stack": [
+        "PyTorch",
+        "Transformers",
+        "Mixture-of-Experts",
+        "KV Cache"
+      ],
+      "bullets": [
+        "Built encoder-decoder and decoder-only Transformers in PyTorch with swappable MHA/GQA attention, RoPE, RMSNorm, BPE and byte-level patching, and ablated one component at a time on a cipher-decryption task.",
+        "Implemented Mixture-of-Experts layers (top-k and shared-expert routing), optimizers such as Muon and AdEMAMix, and beam, top-k and top-p decoding over a KV cache; Muon reached AdamW's loss in half the tokens."
+      ],
+      "key_numbers": [
+        {
+          "value": "5",
+          "label": "architectures in a controlled ablation"
+        },
+        {
+          "value": "5",
+          "label": "optimizers written from scratch"
+        },
+        {
+          "value": "1/2",
+          "label": "the tokens for Muon to reach AdamW's loss"
+        }
+      ],
+      "repo": "https://github.com/IamSid44/Anatomy-of-a-Language-Model",
+      "featured": true
+    },
+    {
+      "id": "scaling-log-analytics",
+      "title": "Scaling Log Analytics: Batch, Stream & Service",
+      "one_liner": "One server-log workload built three ways (MPI, MapReduce, gRPC streaming) to compare distributed-systems models.",
+      "domain": "Distributed Systems",
+      "kind": "Systems project",
+      "stack": [
+        "C++17",
+        "MPI",
+        "Python",
+        "gRPC",
+        "MapReduce"
+      ],
+      "bullets": [
+        "Built one server-log analytics workload as a C++/MPI batch job, a MapReduce job and a gRPC streaming pipeline to compare how each model shapes communication and design; all three match a sequential reference exactly.",
+        "Kept MPI communication small via per-rank summaries and one top-K ranking after the merge (6.39x on 7 nodes); the gRPC pipeline (producer, coordinator, workers) applies backpressure and serves live queries mid-ingestion."
+      ],
+      "key_numbers": [
+        {
+          "value": "6.39x",
+          "label": "MPI speedup on 7 nodes"
+        },
+        {
+          "value": "3",
+          "label": "execution models, byte-identical output"
+        }
+      ],
+      "repo": "https://github.com/IamSid44/Scaling-Log-Analytics",
+      "featured": true
+    },
+    {
+      "id": "ml-methods",
+      "title": "Machine Learning Methods and Models",
+      "one_liner": "Classical ML through diffusion models, implemented and analysed notebook by notebook.",
+      "domain": "ML & NLP",
+      "kind": "Implementation study",
+      "stack": [
+        "Python",
+        "NumPy",
+        "PyTorch",
+        "scikit-learn"
+      ],
+      "bullets": [
+        "Implemented K-Means, Gaussian Mixture Models (EM) and PCA in NumPy, and applied KNN, decision trees, random forests and L1/L2 polynomial regression with validation-based tuning; used the GMM for satellite image segmentation.",
+        "Built an MLP with manual backpropagation for coordinate-based image reconstruction and autoencoder anomaly detection; trained CNNs, an RNN forecaster, VAEs and a U-Net diffusion model in PyTorch."
+      ],
+      "repo": "https://github.com/IamSid44/ml-methods-and-models",
+      "featured": false
+    },
+    {
+      "id": "intellistay",
+      "title": "IntelliStay: AI Churn Retention Platform",
+      "one_liner": "Predicts insurance churn, explains each customer's risk, and drafts the retention action, all on a local machine.",
+      "domain": "ML & NLP",
+      "kind": "Hackathon winner",
+      "context": "1st place, Megathon 2025; team of five",
+      "stack": [
+        "Python",
+        "XGBoost",
+        "SHAP",
+        "DiCE",
+        "Qwen3"
+      ],
+      "bullets": [
+        "Built a churn pipeline for 336K auto-insurance customers: feature engineering, SMOTE on the training split, an XGBoost classifier, SHAP for per-customer risk drivers, and DiCE counterfactuals restricted to premium reductions.",
+        "Fed SHAP drivers and counterfactuals to a locally hosted LLM (Qwen3-4B) that drafts retention actions and nudge messages without customer data leaving the machine; won Megathon 2025."
+      ],
+      "key_numbers": [
+        {
+          "value": "336K",
+          "label": "customers scored"
+        },
+        {
+          "value": "1st",
+          "label": "Megathon 2025"
+        }
+      ],
+      "repo": "https://github.com/IamSid44/IntelliStay-Megathon-25",
+      "featured": true
+    },
+    {
+      "id": "cim-llm-accelerator",
+      "title": "CIM-Based LLM Accelerator",
+      "one_liner": "A hybrid accelerator: systolic array for prefill, in-memory compute for memory-bound decode.",
+      "domain": "Hardware & Architecture",
+      "kind": "Architecture project",
+      "stack": [
+        "SystemC",
+        "NGSpice",
+        "Verilog",
+        "GTKWave"
+      ],
+      "bullets": [
+        "Designed a hybrid LLM-inference accelerator: a systolic array for compute-heavy prefill matrix multiplies, modeled in SystemC with output- and weight-stationary dataflows and tiling, reaching 4.4x fewer cycles.",
+        "Paired it with an 8T-SRAM in-memory-compute core for memory-bound decode, simulated in NGSpice, to reduce weight movement, which limits decode more than arithmetic."
+      ],
+      "key_numbers": [
+        {
+          "value": "4.4x",
+          "label": "fewer cycles with tiled dataflows"
+        }
+      ],
+      "repo": "https://github.com/IamSid44/cim-llm-accelerator",
+      "featured": true
+    },
+    {
+      "id": "riscv",
+      "title": "RISC-V Processor",
+      "one_liner": "A 5-stage pipelined core with forwarding, stalls and flushes, growing toward an out-of-order RV64I design.",
+      "domain": "Hardware & Architecture",
+      "kind": "Architecture project",
+      "stack": [
+        "Verilog",
+        "iVerilog",
+        "GTKWave",
+        "Python"
+      ],
+      "bullets": [
+        "Designed a RISC-V processor in Verilog with sequential and 5-stage pipelined (IF/ID/EX/MEM/WB) datapaths supporting add, sub, and, or, addi, ld, sd and beq, built from a control unit, ALU, register file and data memory.",
+        "Resolved pipeline hazards with EX/MEM and MEM/WB forwarding, load-use stalls and branch flushes; checked it in simulation with an assembler script and Fibonacci, vector-add, linear-search and 15 targeted hazard programs."
+      ],
+      "repo_readme_extension": {
+        "note": "From the repo README, beyond what the CV says",
+        "summary": "Being grown one verified step at a time into a small out-of-order superscalar RV64I core.",
+        "done": [
+          "Assembler, golden-model simulator and one-command regression",
+          "Full RV64I in-order 5-stage core in SystemVerilog with random-program testing",
+          "Precise exceptions and machine-mode traps",
+          "Memory hierarchy: memory latency, instruction and data caches"
+        ],
+        "next": [
+          "Branch prediction",
+          "Prefetching",
+          "Out-of-order execution with a reorder buffer",
+          "2-wide superscalar"
+        ]
+      },
+      "repo": "https://github.com/IamSid44/RISC-V-Processor",
+      "featured": true
+    },
+    {
+      "id": "racket-compiler",
+      "title": "Racket Compiler",
+      "one_liner": "A multi-pass Racket-to-x86 compiler with register allocation and a C runtime.",
+      "domain": "Compilers",
+      "kind": "Systems project",
+      "stack": [
+        "Racket",
+        "x86 Assembly",
+        "C"
+      ],
+      "bullets": [
+        "Built a multi-pass Racket-to-x86 compiler with IRs for integers, booleans, tuples, conditionals, loops and functions.",
+        "Implemented register allocation and dataflow analysis, linked a C runtime, and validated output with a test harness."
+      ],
+      "repo": "https://github.com/IamSid44/racket-to-x86-compiler",
+      "featured": false
+    },
+    {
+      "id": "cla",
+      "title": "4-Bit Carry Lookahead Adder",
+      "one_liner": "From schematic to layout to FPGA: a CLA characterised in SPICE and verified in MAGIC.",
+      "domain": "Hardware & Architecture",
+      "kind": "Circuit design",
+      "stack": [
+        "NGSpice",
+        "MAGIC",
+        "Verilog",
+        "Vivado",
+        "FPGA"
+      ],
+      "bullets": [
+        "Designed a 4-bit CLA, measured delay and power in NGSpice, verified its layout in MAGIC, tested on FPGA."
+      ],
+      "repo": "https://github.com/IamSid44/4-bit-carry-lookahead-adder",
+      "featured": false
+    }
+  ],
+  "filters": {
+    "domain": [
+      "Hardware & Architecture",
+      "ML & NLP",
+      "Distributed Systems",
+      "Compilers"
+    ],
+    "kind": [
+      "Publication",
+      "Research project",
+      "Architecture project",
+      "Systems project",
+      "Implementation study",
+      "Hackathon winner",
+      "Circuit design"
+    ],
+    "stack_groups": {
+      "Hardware": [
+        "Verilog",
+        "SystemVerilog",
+        "SystemC",
+        "NGSpice",
+        "MAGIC",
+        "FPGA",
+        "Vivado"
+      ],
+      "ML": [
+        "PyTorch",
+        "LoRA",
+        "vLLM",
+        "XGBoost",
+        "SHAP",
+        "NumPy",
+        "scikit-learn"
+      ],
+      "Systems": [
+        "C++17",
+        "MPI",
+        "gRPC",
+        "MapReduce",
+        "x86 Assembly",
+        "Racket"
+      ]
+    }
+  },
+  "achievements": [
+    {
+      "label": "Research Award, IIIT Hyderabad",
+      "text": "Awarded for AY 2025–26 for the IEEE ISVLSI 2026 paper on ProbSplat.",
+      "group": "award"
+    },
+    {
+      "label": "Megathon 2025 Winner",
+      "text": "AI-based customer churn prediction and retention strategy platform.",
+      "group": "award"
+    },
+    {
+      "label": "Dean's List",
+      "text": "Top 5% of the department, awarded in every semester to date.",
+      "group": "award"
+    },
+    {
+      "label": "Competitive Programming",
+      "text": "Codeforces Specialist, maximum rating 1446.",
+      "link": "https://codeforces.com/profile/IamSid44",
+      "group": "award"
+    },
+    {
+      "label": "Texas Instruments BYTE Workshop",
+      "text": "Qualified with hands-on training in analog circuits and system design.",
+      "group": "award"
+    },
+    {
+      "label": "JEE Advanced & JEE Mains",
+      "text": "All India Rank 2703 (Advanced) and 2567 (Mains).",
+      "group": "award"
+    },
+    {
+      "label": "Teaching Assistant, IIIT-H",
+      "text": "Probability & Random Processes, Processor Architecture, Coding Theory.",
+      "group": "position"
+    },
+    {
+      "label": "Apex Mentor, IIIT-H",
+      "text": "Guided first-year students academically and socially (July – Oct 2025).",
+      "group": "position"
+    },
+    {
+      "label": "Public Relations Team, E-Cell IIIT-H",
+      "text": "Speaker outreach and coordination for flagship events (2023 – 2024).",
+      "group": "position"
+    }
+  ],
+  "coursework": {
+    "note": "Advanced NLP and Distributed Systems are in progress (Monsoon 2026)",
+    "hardware": [
+      "Hardware for AI",
+      "Intro to Processor Architecture",
+      "Digital Systems & Microcontrollers",
+      "VLSI Design"
+    ],
+    "software_ml": [
+      "Advanced NLP",
+      "Statistical Methods in AI",
+      "Distributed Systems",
+      "Compilers",
+      "Data Structures & Algorithms"
+    ],
+    "math_signals": [
+      "Linear Algebra",
+      "Probability & Random Processes",
+      "Signal Processing",
+      "Signal Detection & Estimation Theory",
+      "Real Analysis",
+      "Functional Analysis"
+    ]
+  },
+  "skills": {
+    "Languages": [
+      "C",
+      "C++",
+      "Python",
+      "Bash",
+      "SystemVerilog",
+      "Verilog",
+      "SystemC",
+      "Racket",
+      "MATLAB"
+    ],
+    "ML & Systems": [
+      "PyTorch",
+      "Hugging Face",
+      "PEFT/LoRA",
+      "vLLM",
+      "scikit-learn",
+      "XGBoost",
+      "NumPy",
+      "MPI",
+      "gRPC"
+    ],
+    "Hardware & Tools": [
+      "NGSpice",
+      "MAGIC",
+      "Xilinx Vivado",
+      "FPGA",
+      "Spotfire",
+      "Slurm",
+      "Git",
+      "Linux",
+      "W&B",
+      "LaTeX"
+    ]
+  }
+}

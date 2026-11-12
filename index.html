@@ -1,42 +1,154 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #E8D5F2 0%, #D0F0E8 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .container {
-            text-align: center;
-            padding: 2rem;
-        }
-        h1 {
-            font-size: 2.5rem;
-            color: #2C2C2C;
-            margin-bottom: 1rem;
-        }
-        p {
-            font-size: 1.1rem;
-            color: #5A5A5A;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Siddarth Gottumukkula · Hardware/software co-design for AI</title>
+  <meta name="description" content="Siddarth Gottumukkula is an undergraduate researcher at IIIT Hyderabad working on hardware/software co-design for AI: compute-in-memory circuits, accelerator architecture and ML systems.">
+  <meta name="author" content="Siddarth Gottumukkula">
+  <link rel="canonical" href="https://iamsid44.github.io/">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Siddarth Gottumukkula">
+  <meta property="og:description" content="Hardware/software co-design for AI: compute-in-memory circuits, accelerator architecture and ML systems.">
+  <meta property="og:url" content="https://iamsid44.github.io/">
+  <meta property="og:image" content="https://iamsid44.github.io/assets/portrait-600.jpg">
+  <meta name="twitter:card" content="summary">
+
+  <meta name="theme-color" content="#131416">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%23131416'/%3E%3Cg fill='%23C2A56B'%3E%3Crect x='6' y='18' width='3' height='8'/%3E%3Crect x='11' y='12' width='3' height='14'/%3E%3Crect x='16' y='6' width='3' height='20'/%3E%3Crect x='21' y='15' width='3' height='11'/%3E%3C/g%3E%3C/svg%3E">
+
+  <!-- Set the theme before first paint. Dark is the default; a stored choice wins. -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add("js");
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") root.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preload" href="assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/geist-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="content-manifest.json" as="fetch" crossorigin>
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <link rel="modulepreload" href="js/main.js">
+  <link rel="modulepreload" href="js/lib/dom.js">
+  <link rel="modulepreload" href="js/lib/icons.js">
+  <link rel="modulepreload" href="js/lib/interactions.js">
+  <link rel="modulepreload" href="js/lib/gmm.js">
+  <link rel="modulepreload" href="js/components/nav.js">
+  <link rel="modulepreload" href="js/components/hero.js">
+  <link rel="modulepreload" href="js/components/research.js">
+  <link rel="modulepreload" href="js/components/sandbox.js">
+  <link rel="modulepreload" href="js/components/projects.js">
+  <link rel="modulepreload" href="js/components/timeline.js">
+  <link rel="modulepreload" href="js/components/background.js">
+  <link rel="modulepreload" href="js/components/footer.js">
+  <script type="module" src="js/main.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Siddarth Gottumukkula",
+    "url": "https://iamsid44.github.io/",
+    "image": "https://iamsid44.github.io/assets/portrait-600.jpg",
+    "jobTitle": "Undergraduate Student Researcher",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "International Institute of Information Technology, Hyderabad" },
+    "sameAs": ["https://github.com/IamSid44", "https://www.linkedin.com/in/siddarth-gottumukkula/"]
+  }
+  </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Coming Soon</h1>
-        <p>The website is under construction. Check back soon!</p>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-slot="nav"></header>
+
+  <main id="main">
+    <section id="top" class="hero" data-slot="hero" aria-label="Introduction">
+      <!-- Static first paint; hero.js renders the full section in the same position. -->
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-main">
+            <p class="label hero-eyebrow">Undergraduate Student Researcher · CVEST, IIIT Hyderabad</p>
+            <h1 class="hero-name">Siddarth<br>Gottumukkula</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="research" class="section" aria-labelledby="h-research">
+      <div class="wrap section-grid">
+        <header class="section-head" data-reveal>
+          <h2 id="h-research">Research</h2>
+          <p>Compute-in-memory circuits for probabilistic computing, with Dr. Priyesh Shukla at CVEST.</p>
+        </header>
+        <div class="section-body" data-slot="research"></div>
+      </div>
+    </section>
+
+    <section id="demo" class="section" aria-labelledby="h-demo">
+      <div class="wrap section-grid">
+        <header class="section-head" data-reveal>
+          <h2 id="h-demo">Column current</h2>
+          <p>A toy model of the idea behind ProbSplat. Each column stores one Gaussian; its current says how likely the probe point is under it.</p>
+        </header>
+        <div class="section-body" data-slot="sandbox"></div>
+      </div>
+    </section>
+
+    <section id="projects" class="section" aria-labelledby="h-projects">
+      <div class="wrap section-grid">
+        <header class="section-head" data-reveal>
+          <h2 id="h-projects">Projects</h2>
+          <p>Processors, accelerators, language models and distributed systems. Filter by domain or stack, and open a row for detail.</p>
+        </header>
+        <div class="section-body" data-slot="projects"></div>
+      </div>
+    </section>
+
+    <section id="experience" class="section" aria-labelledby="h-experience">
+      <div class="wrap section-grid">
+        <header class="section-head" data-reveal>
+          <h2 id="h-experience">Experience</h2>
+          <p>2023 to 2027, most recent first. Roles open for detail.</p>
+        </header>
+        <div class="section-body" data-slot="timeline"></div>
+      </div>
+    </section>
+
+    <section id="background" class="section" aria-labelledby="h-background">
+      <div class="wrap section-grid">
+        <header class="section-head" data-reveal>
+          <h2 id="h-background">Background</h2>
+          <p>Recognition, positions, coursework and tools.</p>
+        </header>
+        <div class="section-body" data-slot="background"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer" data-slot="footer"></footer>
+
+  <div class="sr-only" aria-live="polite" id="live-region"></div>
+
+  <noscript>
+    <div class="wrap noscript">
+      <p>This page renders its content with JavaScript. Without it, you can still reach me:</p>
+      <p>
+        <a href="assets/Siddarth_Gottumukkula_CV.pdf">CV (PDF)</a> ·
+        <a href="https://github.com/IamSid44">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/siddarth-gottumukkula/">LinkedIn</a> ·
+        <a href="mailto:siddarth.g@students.iiit.ac.in">siddarth.g@students.iiit.ac.in</a>
+      </p>
     </div>
+  </noscript>
 </body>
 </html>

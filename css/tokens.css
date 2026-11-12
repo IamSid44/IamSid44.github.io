@@ -1,0 +1,76 @@
+/* Design tokens: "Bond Wire". Graphite with muted brass, dark first.
+   Every colour, size and timing used by the site is defined here. */
+
+@font-face {
+  font-family: "Geist";
+  src: url("../assets/fonts/geist-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist Mono";
+  src: url("../assets/fonts/geist-mono-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* colour */
+  --bg: #131416;
+  --surface: #1b1d20;
+  --surface-2: #212428;
+  --line: #2c2f34;
+  --line-strong: #41454c;
+  --fg: #eceae4;
+  --muted: #a3a199;
+  --faint: #73726c;
+  --accent: #c2a56b;
+  --accent-soft: rgba(194, 165, 107, 0.12);
+  --on-accent: #131416;
+  --header-bg: rgba(19, 20, 22, 0.82);
+
+  /* type */
+  --font-sans: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", "Cascadia Mono", Menlo, Consolas, monospace;
+  --t-2xs: 0.6875rem;
+  --t-xs: 0.75rem;
+  --t-sm: 0.875rem;
+  --t-base: 1rem;
+  --t-md: 1.125rem;
+  --t-lg: 1.375rem;
+  --t-xl: clamp(1.5rem, 1.2rem + 1.2vw, 1.875rem);
+  --t-hero: clamp(2.5rem, 1.3rem + 5.6vw, 4.75rem);
+
+  /* space and shape */
+  --wrap: 1120px;
+  --gutter: clamp(18px, 4vw, 40px);
+  --section-y: clamp(56px, 8vw, 104px);
+  --radius: 2px;
+  --header-h: 56px;
+
+  /* motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 140ms;
+  --dur: 220ms;
+  --dur-slow: 280ms;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f3f2ee;
+  --surface: #fbfaf7;
+  --surface-2: #eceae3;
+  --line: #d9d6cd;
+  --line-strong: #bdb9ad;
+  --fg: #1a1b1d;
+  --muted: #5f5d57;
+  --faint: #8c897f;
+  --accent: #7a5f22;
+  --accent-soft: rgba(122, 95, 34, 0.1);
+  --on-accent: #fbfaf7;
+  --header-bg: rgba(243, 242, 238, 0.85);
+}
