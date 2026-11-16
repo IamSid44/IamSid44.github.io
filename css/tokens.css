@@ -26,8 +26,8 @@
   --line: #2c2f34;
   --line-strong: #41454c;
   --fg: #eceae4;
-  --muted: #a3a199;
-  --faint: #73726c;
+  --muted: #c4c1b8; /* body copy and descriptions: about 10:1 on --bg */
+  --faint: #8f8d86;
   --accent: #c2a56b;
   --accent-soft: rgba(194, 165, 107, 0.12);
   --on-accent: #131416;
@@ -69,8 +69,8 @@
   --line: #d9d6cd;
   --line-strong: #bdb9ad;
   --fg: #1a1b1d;
-  --muted: #5f5d57;
-  --faint: #8c897f;
+  --muted: #4b4944;
+  --faint: #6f6c64;
   --accent: #7a5f22;
   --accent-soft: rgba(122, 95, 34, 0.1);
   --on-accent: #fbfaf7;

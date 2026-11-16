@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-11-13",
+    "generated": "2026-11-16",
     "note": "Single content source for the site. Edit here; the page renders from this file."
   },
   "person": {
@@ -178,6 +178,48 @@
   ],
   "projects": [
     {
+      "id": "cache22",
+      "title": "Cache-22: Out-of-Order RISC-V Processor",
+      "one_liner": "A 2-wide out-of-order RV64I core behind a two-level cache hierarchy, built in ten measured phases. Named for the cache results that go against the obvious fix.",
+      "domain": "Hardware & Architecture",
+      "kind": "Architecture project",
+      "context": "RTL simulation",
+      "stack": [
+        "SystemVerilog",
+        "Icarus Verilog",
+        "Python"
+      ],
+      "bullets": [
+        "Grew an 8-instruction course pipeline into a 2-wide out-of-order RV64I core in SystemVerilog: Tomasulo scheduling with a reorder buffer, precise exceptions, branch prediction and prefetching, alongside an in-order 5-stage core.",
+        "Built a two-level cache hierarchy with every textbook choice a parameter (4 replacement policies, write and victim buffers, inclusive L2) and measured each step on 15 kernels: 11.8x over the cacheless pipeline, 6x of it from caches.",
+        "Wrote the Python toolchain around it (assembler, golden-model simulator, random-program generator and cache model) and checked every core against it, commit by commit, on directed, random and benchmark programs."
+      ],
+      "key_numbers": [
+        {
+          "value": "11.8x",
+          "label": "faster than the same pipeline without caches (geometric mean, 15 kernels)"
+        },
+        {
+          "value": "6x",
+          "label": "of that from the cache hierarchy alone"
+        }
+      ],
+      "repo_readme_extension": {
+        "note": "From the repo README, beyond what the CV says",
+        "summary": "Built in ten phases, each ending with a full regression and a measured result, including the cases where a component does not help.",
+        "done": [
+          "Full RV64I in-order 5-stage core with precise exceptions",
+          "Instruction and data caches, branch prediction (a table of targets with 2-bit counters), next-line and stride prefetching",
+          "Out-of-order execution with a reorder buffer, then two instructions per cycle",
+          "Cache replacement and write policies, write buffer, victim buffer, and a second cache level that is inclusive or not",
+          "Sweeps of every cache parameter, compared against the optimal replacement policy",
+          "Assembler, golden-model simulator, random-program generator and cache model, all written in Python"
+        ]
+      },
+      "repo": "https://github.com/IamSid44/Cache-22",
+      "featured": true
+    },
+    {
       "id": "clarity",
       "title": "CLARITY: Unmasking Political Question Evasions",
       "one_liner": "Classifying how clearly politicians answer interview questions, with a confidence-routed LLM cascade.",
@@ -221,8 +263,8 @@
         "KV Cache"
       ],
       "bullets": [
-        "Built encoder-decoder and decoder-only Transformers in PyTorch with swappable MHA/GQA attention, RoPE, RMSNorm, BPE and byte-level patching, and ablated one component at a time on a cipher-decryption task.",
-        "Implemented Mixture-of-Experts layers (top-k and shared-expert routing), optimizers such as Muon and AdEMAMix, and beam, top-k and top-p decoding over a KV cache; Muon reached AdamW's loss in half the tokens."
+        "Built encoder-decoder and decoder-only Transformers in PyTorch with swappable MHA/GQA attention, RoPE, RMSNorm, BPE and byte-level patching, and ablated each on cipher decryption (RoPE best, 99.3% accuracy).",
+        "Implemented Mixture-of-Experts (top-k, shared-expert), Muon and AdEMAMix, and beam, top-k and top-p decoding over a KV cache; top-2 MoE beat dense with 25% fewer active parameters; Muon matched AdamW in half the tokens."
       ],
       "key_numbers": [
         {
@@ -334,13 +376,21 @@
         "GTKWave"
       ],
       "bullets": [
-        "Designed a hybrid LLM-inference accelerator: a systolic array for compute-heavy prefill matrix multiplies, modeled in SystemC with output- and weight-stationary dataflows and tiling, reaching 4.4x fewer cycles.",
-        "Paired it with an 8T-SRAM in-memory-compute core for memory-bound decode, simulated in NGSpice, to reduce weight movement, which limits decode more than arithmetic."
+        "Designed a hybrid LLM-inference accelerator: a systolic array for prefill matrix multiplies, modeled in SystemC with output- and weight-stationary dataflows, tiling and data reuse: 4.4x fewer cycles and up to 85.7% fewer memory reads.",
+        "Paired it with an 8T-SRAM in-memory-compute core for memory-bound decode; simulated in NGSpice, a 16-bit macro used 2.32x less energy per operation than a digital design."
       ],
       "key_numbers": [
         {
           "value": "4.4x",
           "label": "fewer cycles with tiled dataflows"
+        },
+        {
+          "value": "85.7%",
+          "label": "fewer memory reads, at best, with data reuse"
+        },
+        {
+          "value": "2.32x",
+          "label": "less energy per operation for a 16-bit in-memory macro than a digital design"
         }
       ],
       "repo": "https://github.com/IamSid44/cim-llm-accelerator",
@@ -349,7 +399,7 @@
     {
       "id": "riscv",
       "title": "RISC-V Processor",
-      "one_liner": "A 5-stage pipelined core with forwarding, stalls and flushes, growing toward an out-of-order RV64I design.",
+      "one_liner": "Sequential and 5-stage pipelined 64-bit RISC-V datapaths with forwarding, stalls and flushes. The course project that Cache-22 grew from.",
       "domain": "Hardware & Architecture",
       "kind": "Architecture project",
       "stack": [
@@ -359,32 +409,16 @@
         "Python"
       ],
       "bullets": [
-        "Designed a RISC-V processor in Verilog with sequential and 5-stage pipelined (IF/ID/EX/MEM/WB) datapaths supporting add, sub, and, or, addi, ld, sd and beq, built from a control unit, ALU, register file and data memory.",
-        "Resolved pipeline hazards with EX/MEM and MEM/WB forwarding, load-use stalls and branch flushes; checked it in simulation with an assembler script and Fibonacci, vector-add, linear-search and 15 targeted hazard programs."
+        "Designed a 64-bit RISC-V processor in Verilog with sequential and 5-stage pipelined (IF/ID/EX/MEM/WB) datapaths for add, sub, and, or, addi, ld, sd and beq, built from a control unit, ALU, register file and data memory.",
+        "Resolved pipeline hazards with EX/MEM and MEM/WB forwarding, load-use stalls and branch flushes; verified in simulation on 22 programs, including Fibonacci, vector-add, linear-search and 15 hazard tests."
       ],
-      "repo_readme_extension": {
-        "note": "From the repo README, beyond what the CV says",
-        "summary": "Being grown one verified step at a time into a small out-of-order superscalar RV64I core.",
-        "done": [
-          "Assembler, golden-model simulator and one-command regression",
-          "Full RV64I in-order 5-stage core in SystemVerilog with random-program testing",
-          "Precise exceptions and machine-mode traps",
-          "Memory hierarchy: memory latency, instruction and data caches"
-        ],
-        "next": [
-          "Branch prediction",
-          "Prefetching",
-          "Out-of-order execution with a reorder buffer",
-          "2-wide superscalar"
-        ]
-      },
       "repo": "https://github.com/IamSid44/RISC-V-Processor",
       "featured": true
     },
     {
       "id": "racket-compiler",
       "title": "Racket Compiler",
-      "one_liner": "A multi-pass Racket-to-x86 compiler with register allocation and a C runtime.",
+      "one_liner": "A 14-pass Racket-to-x86 compiler with register allocation and a C runtime.",
       "domain": "Compilers",
       "kind": "Systems project",
       "stack": [
@@ -393,8 +427,8 @@
         "C"
       ],
       "bullets": [
-        "Built a multi-pass Racket-to-x86 compiler with IRs for integers, booleans, tuples, conditionals, loops and functions.",
-        "Implemented register allocation and dataflow analysis, linked a C runtime, and validated output with a test harness."
+        "Built a 14-pass Racket-to-x86 compiler with IRs for integers, booleans, tuples, conditionals, loops and functions.",
+        "Implemented register allocation and dataflow analysis, linked a C runtime, and validated output on 176 test programs."
       ],
       "repo": "https://github.com/IamSid44/racket-to-x86-compiler",
       "featured": false
@@ -413,7 +447,7 @@
         "FPGA"
       ],
       "bullets": [
-        "Designed a 4-bit CLA, measured delay and power in NGSpice, verified its layout in MAGIC, tested on FPGA."
+        "Designed a 182-transistor 4-bit CLA in 180 nm CMOS, measured delay and power in NGSpice (450 ps post-layout), verified its layout in MAGIC, tested on FPGA."
       ],
       "repo": "https://github.com/IamSid44/4-bit-carry-lookahead-adder",
       "featured": false
@@ -482,7 +516,7 @@
     },
     {
       "label": "Competitive Programming",
-      "text": "Codeforces Specialist, maximum rating 1446.",
+      "text": "Codeforces Specialist, maximum rating 1452.",
       "link": "https://codeforces.com/profile/IamSid44",
       "group": "award"
     },
